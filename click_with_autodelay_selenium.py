@@ -34,7 +34,8 @@ def delay() -> str:
     """Проверка задержки времени компьютера через сайт посредством selenium"""
     print('Сейчас будет открыт браузер. Пожалуйста, ничего не трогайте, он закроется автоматически')
     time.sleep(1)
-    driver = webdriver.Chrome()
+    # Путь до chromedriver. Если что-то не работает - замените chromedriver в папке на версию для Вашего браузера
+    driver = webdriver.Chrome(executable_path = 'chromedriver')
     driver.get("https://time100.ru/online")
     try:
         time.sleep(4)
