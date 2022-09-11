@@ -5,9 +5,8 @@ from selenium.webdriver.common.by import By
 import time
 
 
-
-def delay():
-    """Возвращает задержку времени"""
+def delay() -> str:
+    """Смотрит задержку времени на сатйе и возвращает её"""
     driver = webdriver.Chrome()
     driver.get("https://time100.ru/online")
     try:
@@ -16,7 +15,10 @@ def delay():
     finally:
         time.sleep(1)
         driver.quit()
-        return (str(b[4][1:]))
+        if str(b[4][2:]).isdigit():
+            return str(b[4][1:])
+        else:
+            return '.0'
 
 
 print('В какое время нужно кликнуть? Напишите в формате "00:00" или "00:00:00" и нажмите Enter:')
